@@ -20,6 +20,7 @@ const data3 = {
     fr: { id: 3, text: 'Salut!' }
 };
 
+//  --------------------------------------------------------------------
 
 const transformObjectToArrayOfObjects = (data, sortOrder) => {
 
@@ -52,6 +53,8 @@ console.log(JSON.stringify(result1, undefined, '  '));
 console.log('result2: ', result2);
 console.log('result3: ', result3);
 
+//  --------------------------------------------------------------------
+
 const transformDataArrayToObject = (data, requiredLanguages) => {
 
     let resultObject = {}
@@ -74,3 +77,5 @@ const requiredLanguages = ['uk', 'en', 'fr']
 const data4 = transformDataArrayToObject(result4, requiredLanguages)
 
 console.log('data4: ', data4);
+
+//  --------------------------------------------------------------------
