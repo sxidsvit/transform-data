@@ -1,22 +1,16 @@
 "use strict";
 // ---------
-const data = {
+const data1 = {
     uk: { id: 1, text: 'Привіт!' },
     en: { id: 2, text: 'Hello!' },
     fr: { id: 3, text: 'Salut!' }
 };
-const expectedResult = [
-    { lang: 'en', id: 2, text: 'Hello!' },
-    { lang: 'uk', id: 1, text: 'Привіт!' },
-    { lang: 'fr', id: 3, text: 'Salut!' }
-];
 
 const data2 = {
     uk: { id: 1, text: 'Привіт!' },
     en: null,
     fr: undefined
 };
-
 
 const data3 = {
     uk: { id: 1, text: 'Привіт!' },
@@ -49,7 +43,7 @@ const transformObjectToArrayOfObjects = (data, sortOrder) => {
 
 const sortOrder = ['en', 'uk', 'fr']
 
-const result1 = transformObjectToArrayOfObjects(data, sortOrder)
+const result1 = transformObjectToArrayOfObjects(data1, sortOrder)
 const result2 = transformObjectToArrayOfObjects(data2, sortOrder)
 const result3 = transformObjectToArrayOfObjects(data3, sortOrder)
 
@@ -57,10 +51,6 @@ const result3 = transformObjectToArrayOfObjects(data3, sortOrder)
 console.log(JSON.stringify(result1, undefined, '  '));
 console.log('result2: ', result2);
 console.log('result3: ', result3);
-
-
-// 4. Обратная трансформация(***)
-
 
 const transformDataArrayToObject = (data, requiredLanguages) => {
 
@@ -78,16 +68,9 @@ const transformDataArrayToObject = (data, requiredLanguages) => {
 
 }
 
-
 const result4 = [{ lang: 'en', id: 2, text: 'Hello!' }];
 const requiredLanguages = ['uk', 'en', 'fr']
 
-const resultObject = transformDataArrayToObject(result4, requiredLanguages)
+const data4 = transformDataArrayToObject(result4, requiredLanguages)
 
-console.log('resultObject: ', resultObject);
-
-
-// for (let language of requiredLanguages) {
-//     console.log('language: ', language);
-
-// }
+console.log('data4: ', data4);
