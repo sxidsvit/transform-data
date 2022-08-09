@@ -23,7 +23,6 @@ const data3 = {
 //  --------------------------------------------------------------------
 
 const transformObjectToArrayOfObjects = (data, sortOrder) => {
-
     const sortedData = []
 
     for (let [key, value] of Object.entries(data)) {
@@ -38,6 +37,7 @@ const transformObjectToArrayOfObjects = (data, sortOrder) => {
         }
     }
 
+    console.log('transformObjectToArrayOfObjects - sortedData: ', sortedData);
     return sortedData
 
 }
@@ -50,8 +50,8 @@ const result3 = transformObjectToArrayOfObjects(data3, sortOrder)
 
 
 console.log(JSON.stringify(result1, undefined, '  '));
-console.log('result2: ', result2);
-console.log('result3: ', result3);
+// console.log('result2: ', result2);
+// console.log('result3: ', result3);
 
 //  --------------------------------------------------------------------
 
@@ -79,3 +79,5 @@ const data4 = transformDataArrayToObject(result4, requiredLanguages)
 console.log('data4: ', data4);
 
 //  --------------------------------------------------------------------
+
+module.exports = { transformObjectToArrayOfObjects, transformDataArrayToObject }
