@@ -104,3 +104,5 @@ const requiredLanguages = ['uk', 'en', 'fr']
 const data4 = transformDataArrayToObject(result4, requiredLanguages)
 
 console.log('data4: ', data4)
+
+module.exports = { transformObjectToArrayOfObjects, transformDataArrayToObject }

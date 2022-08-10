@@ -1,4 +1,4 @@
-const { transformObjectToArrayOfObjects, transformDataArrayToObject } = require('./main-initial')
+const { transformObjectToArrayOfObjects, transformDataArrayToObject } = require('./main')
 
 // -------- Initial data for transforming Object to Array of objects ------------------------
 
@@ -53,7 +53,5 @@ describe('Validate data transformation', () => {
   test('Transform Array of objects to Object ', () => {
     expect(transformDataArrayToObject(result4, requiredLanguages)).toStrictEqual(data4)
   })
-
-
 
 })

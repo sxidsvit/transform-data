@@ -1,3 +1,14 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __rest = (this && this.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -10,12 +21,12 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 // ---------
-const data = {
+var data = {
     uk: { id: 1, text: 'Привіт!' },
     en: { id: 2, text: 'Hello!' },
-    fr: { id: 3, text: 'Salut!' },
+    fr: { id: 3, text: 'Salut!' }
 };
-const expectedResult = [
+var expectedResult = [
     { lang: 'en', id: 2, text: 'Hello!' },
     { lang: 'uk', id: 1, text: 'Привіт!' },
     { lang: 'fr', id: 3, text: 'Salut!' },
@@ -23,57 +34,60 @@ const expectedResult = [
 console.log('Expected:');
 console.log(JSON.stringify(expectedResult, undefined, '  '));
 // ---------
-const data1 = {
+var data1 = {
     uk: { id: 1, text: 'Привіт!' },
     en: { id: 2, text: 'Hello!' },
-    fr: { id: 3, text: 'Salut!' },
+    fr: { id: 3, text: 'Salut!' }
 };
-const data2 = {
+var data2 = {
     uk: { id: 1, text: 'Привіт!' },
     en: null,
-    fr: undefined,
+    fr: undefined
 };
-const data3 = {
+var data3 = {
     uk: { id: 1, text: 'Привіт!' },
     ru: { id: 4, text: 'Привет!' },
     en: { id: 2, text: 'Hello!' },
     jp: { id: 5, text: 'こんにちは!' },
-    fr: { id: 3, text: 'Salut!' },
+    fr: { id: 3, text: 'Salut!' }
 };
 //  --------------------------------------------------------------------
-const transformObjectToArrayOfObjects = (data, sortOrder) => {
-    const sortedData = [];
-    for (let [key, value] of Object.entries(data)) {
-        const currentIndex = sortOrder.indexOf(key);
+var transformObjectToArrayOfObjects = function (data, sortOrder) {
+    var sortedData = [];
+    for (var _i = 0, _a = Object.entries(data); _i < _a.length; _i++) {
+        var _b = _a[_i], key = _b[0], value = _b[1];
+        var currentIndex = sortOrder.indexOf(key);
         if (value && currentIndex >= 0) {
-            let currentObject = {};
+            var currentObject = {};
             currentObject['lang'] = sortOrder[currentIndex];
-            currentObject = Object.assign(Object.assign({}, currentObject), value);
+            currentObject = __assign(__assign({}, currentObject), value);
             sortedData.push(currentObject);
         }
     }
     return sortedData;
 };
-const sortOrder = ['en', 'uk', 'fr'];
-const result1 = transformObjectToArrayOfObjects(data1, sortOrder);
-const result2 = transformObjectToArrayOfObjects(data2, sortOrder);
-const result3 = transformObjectToArrayOfObjects(data3, sortOrder);
+var sortOrder = ['en', 'uk', 'fr'];
+var result1 = transformObjectToArrayOfObjects(data1, sortOrder);
+var result2 = transformObjectToArrayOfObjects(data2, sortOrder);
+var result3 = transformObjectToArrayOfObjects(data3, sortOrder);
 console.log(JSON.stringify(result1, undefined, '  '));
 console.log('result2: ', result2);
 console.log('result3: ', result3);
 //  --------------------------------------------------------------------
-const transformDataArrayToObject = (data, requiredLanguages) => {
-    let resultObject = {};
-    for (let language of requiredLanguages) {
+var transformDataArrayToObject = function (data, requiredLanguages) {
+    var resultObject = {};
+    for (var _i = 0, requiredLanguages_1 = requiredLanguages; _i < requiredLanguages_1.length; _i++) {
+        var language = requiredLanguages_1[_i];
         resultObject[language] = null;
     }
-    data.map((item) => {
-        const { lang } = item, rest = __rest(item, ["lang"]);
+    data.map(function (item) {
+        var lang = item.lang, rest = __rest(item, ["lang"]);
         resultObject[lang] = rest;
     });
     return resultObject;
 };
-const result4 = [{ lang: 'en', id: 2, text: 'Hello!' }];
-const requiredLanguages = ['uk', 'en', 'fr'];
-const data4 = transformDataArrayToObject(result4, requiredLanguages);
+var result4 = [{ lang: 'en', id: 2, text: 'Hello!' }];
+var requiredLanguages = ['uk', 'en', 'fr'];
+var data4 = transformDataArrayToObject(result4, requiredLanguages);
 console.log('data4: ', data4);
+module.exports = { transformObjectToArrayOfObjects: transformObjectToArrayOfObjects, transformDataArrayToObject: transformDataArrayToObject };
