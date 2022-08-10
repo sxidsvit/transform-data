@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "types": ["jest"],
-    "target": "es2017",
+    "types": ["jest", "node"],
+    "target": "es2019",
     "outFile": "./main.js"
   }
 }
